@@ -62,7 +62,7 @@ class JenisBarangController extends Controller
 
     public function destroy(Request $request, JenisBarang $jenis)
     {
-        $jenis->destroy();
+        $jenisBarang = JenisBarang::find($jenis->id)->delete();
 
         return response()->json([
             'data' => new JenisBarangResource($jenis),
