@@ -92,12 +92,12 @@
                 <input id="jenis_barang" v-model="payload.jenis_barang" type="text" autocomplete="off" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
               </div>
             </div>
-            <div class="flex justify-end items-center space-x-3">
+            <div class="flex justify-end items-center space-x-3 box-border px-4 py-2">
               <button
-                @click.prevent="deleteData"
+                @click.prevent="storeData"
                 class="px-4 py-2 rounded bg-green-500 text-white text-xs font-semibold border border-green-500 hover:bg-transparent hover:text-green-500"
               >
-                Ya, hapus
+                Simpan
               </button>
               <button
                 @click.prevent="closeModalTambah"
@@ -137,6 +137,8 @@ export default {
       jenis_barang: ""
     })
 
+    const loadingSave = ref(false)
+
     const modalTambah = ref()
 
     const fetchData = async () => {
@@ -152,6 +154,34 @@ export default {
         console.log(error)
       }
     }
+
+    const storeData = async () => {
+      reset();
+      if (loadingSave.value) return;
+      loadingSave.value = true;
+      try {
+        await jenisBarangRepo.store(payload);
+
+        loadingSave.value = false;
+        toast.success("Success Notification !", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 1000,
+        })
+      } catch (e) {
+        if (e.response.status == 422) {
+          let err = e.response.data.errors;
+
+          if (err.nama) {
+            error.nama = err.nama[0];
+          }
+          if (err.keterangan) {
+            error.keterangan = err.keterangan[0];
+          }
+        }
+
+        loadingSave.value = false;
+      }
+    };
 
     // open modal delete
     const openModalTambah = () => {
@@ -178,6 +208,7 @@ export default {
       modalTambah,
       openModalTambah,
       closeModalTambah,
+      storeData,
     }
   },
 }
