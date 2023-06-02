@@ -140,7 +140,7 @@
             <!-- end prediksi -->
 
             <!-- logout -->
-            <router-link to="/login" custom v-slot="{ href, navigate, isExactActive }">
+            <a href="#" @click="logout()">
               <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0" :class="isExactActive && 'bg-slate-900'">
                 <a class="block text-slate-200 truncate transition duration-150" :class="isExactActive ? 'hover:text-slate-200' : 'hover:text-white'" :href="href" @click="navigate">
                   <div class="flex items-center">
@@ -152,7 +152,7 @@
                   </div>
                 </a>
               </li>
-            </router-link>
+            </a>
             <!-- end logout -->
 
           </ul>
@@ -179,6 +179,7 @@
 <script>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from "@/stores/auth"
 
 import SidebarLinkGroup from './SidebarLinkGroup.vue'
 
@@ -190,8 +191,10 @@ export default {
   },
   setup(props, { emit }) {
 
+    const store = useAuthStore()
     const trigger = ref(null)
     const sidebar = ref(null)
+    const router = useRouter()
 
     const storedSidebarExpanded = localStorage.getItem('sidebar-expanded')
     const sidebarExpanded = ref(storedSidebarExpanded === null ? false : storedSidebarExpanded === 'true')
@@ -234,11 +237,16 @@ export default {
       }
     })
 
+    const logout = () => {
+      Promise.all([store.logout(), router.push({ path: "/login" })]);
+    }
+
     return {
       trigger,
       sidebar,
       sidebarExpanded,
       currentRoute,
+      logout,
     }
   },
 }

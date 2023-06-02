@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
 
 const routerHistory = createWebHistory()
 
@@ -9,7 +10,7 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: () => import('@/pages/Login.vue'),
-      meta: { title: 'Login', auth: true, menu: 'login', bread: 'Login' },
+      meta: { title: 'Login', auth: true, menu: 'login', bread: 'Login', public: true },
     },
     {
       path: '/',
@@ -44,6 +45,20 @@ const router = createRouter({
       ]
     },
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  const { isAuthenticated } = useAuthStore()
+
+  document.title = `TBRM - ${to.meta.title}`
+
+
+  const privateRoute = to.matched.some((record) => !record.meta.public)
+  const publicRoute = to.matched.some((record) => record.meta.public)
+
+  if (privateRoute && !isAuthenticated) next('/login')
+  else if (publicRoute && isAuthenticated) next('/')
+  else next()
 })
 
 export default router
