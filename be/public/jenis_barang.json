@@ -1,62 +1,118 @@
 [
   {
+    "no": 1,
     "nama": "Engsel"
   },
   {
+    "no": 2,
     "nama": "Grendel"
   },
   {
+    "no": 3,
     "nama": "Hak Angin"
   },
   {
+    "no": 4,
     "nama": "Gembok"
   },
   {
+    "no": 5,
     "nama": "Bahan Kamar Mandi"
   },
   {
-    "nama": "Bahan Kunci"
-  },
-  {
+    "no": 6,
     "nama": "Bahan Pintu"
   },
   {
+    "no": 7,
     "nama": "Peralatan Tukang  Kunci"
   },
   {
+    "no": 8,
     "nama": "Peralatan Tukang  Tatah"
   },
   {
-    "nama": "Peralatan Tukang  Cetok"
+    "no": 9,
+    "nama": "Peralatan Tukang Palu"
   },
   {
-    "nama": "Peralatan Tukang  Palu"
+    "no": 10,
+    "nama": "Peralatan Tukang Gergaji"
   },
   {
+    "no": 11,
     "nama": "Peralatan Tukang  Kuas"
   },
   {
-    "nama": "Peralatan Tukang  Klem"
-  },
-  {
+    "no": 12,
     "nama": "Peralatan Tukang  Siku"
   },
   {
-    "nama": "Karet Kaki Meja"
-  },
-  {
-    "nama": "Peralatan Rumah Tangga"
-  },
-  {
+    "no": 13,
     "nama": "Peralatan Pemotong"
   },
   {
+    "no": 14,
     "nama": "Amplas"
   },
   {
+    "no": 15,
     "nama": "Semen"
   },
   {
+    "no": 16,
     "nama": "Barang Pengukur"
+  },
+  {
+    "no": 17,
+    "nama": "Barang Talang"
+  },
+  {
+    "no": 18,
+    "nama": "Barang Lampu"
+  },
+  {
+    "no": 19,
+    "nama": "Barang Atab"
+  },
+  {
+    "no": 20,
+    "nama": "Barang Pipa"
+  },
+  {
+    "no": 21,
+    "nama": "Barang Paku"
+  },
+  {
+    "no": 22,
+    "nama": "Barang Baut"
+  },
+  {
+    "no": 23,
+    "nama": "Barang Triplek"
+  },
+  {
+    "no": 24,
+    "nama": "Barang Cat Plitur"
+  },
+  {
+    "no": 25,
+    "nama": "Barang Cat Minyak"
+  },
+  {
+    "no": 26,
+    "nama": "Barang Cat Tembok"
+  },
+  {
+    "no": 27,
+    "nama": "Barang Pasir"
+  },
+  {
+    "no": 28,
+    "nama": "Barang Batu"
+  },
+  {
+    "no": 29,
+    "nama": "Barang Besi"
   }
 ]

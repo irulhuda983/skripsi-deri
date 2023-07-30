@@ -30,7 +30,7 @@ class PrediksiController extends Controller
         $request->validate([
             'nama_barang' => 'required',
             'jenis_barang_id' => 'required',
-            'bulan' => 'required',
+            // 'bulan' => 'required',
             'permintaan' => 'required',
             'kriteria_harga' => 'required'
         ]);

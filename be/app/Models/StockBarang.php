@@ -17,4 +17,12 @@ class StockBarang extends Model
     {
         return $this->belongsTo(JenisBarang::class);
     }
+
+    public function scopeHasil($query, $hasil) {
+        if($hasil) {
+            return $query->where('hasil', $hasil);
+        }
+
+        return $query;
+    }
 }

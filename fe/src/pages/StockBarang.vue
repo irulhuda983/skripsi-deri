@@ -358,6 +358,7 @@ export default {
     const jenisBarangRepo = RepositoryFactory.get("jenisBarang")
     const params = reactive({
       filter: "",
+      hasil: null,
       page: 1,
       limit: 10,
       sort: "created_at:desc",

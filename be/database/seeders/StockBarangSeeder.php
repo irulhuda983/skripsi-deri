@@ -21,11 +21,11 @@ class StockBarangSeeder extends Seeder
         StockBarang::truncate();
         foreach($json as $item) {
             StockBarang::create([
-                'nama_barang' => $item['nama_barang'],
+                'nama_barang' => $item['nama'],
                 'jenis_barang_id' => $item['id_jenis'],
                 'bulan' => 'januari',
                 'permintaan' => $item['stok'],
-                'kriteria_harga' => $item['kriteria_harga'],
+                'kriteria_harga' => $item['k_harga'],
                 'hasil' => $item['hasil'],
             ]);
         }
