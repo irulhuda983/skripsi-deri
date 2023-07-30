@@ -350,6 +350,8 @@ export default {
     // open modal update
     const closeModalUpdate = () => {
       idJenis.value = null
+      payload.jenis_barang = ''
+      payload.status = 1
       modalUpdate.value.open = false
       // modalDelete.value.open = true
     }

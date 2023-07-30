@@ -34,7 +34,7 @@
                   <div class="font-semibold text-center">Bulan</div>
                 </th>
                 <th class="p-2">
-                  <div class="font-semibold text-center">Permintaan</div>
+                  <div class="font-semibold text-center">Stock</div>
                 </th>
                 <th class="p-2">
                   <div class="font-semibold text-center">Kriteria Harga</div>
@@ -126,7 +126,7 @@
                 </div>
               </div>
 
-              <div class="mb-2">
+              <!-- <div class="mb-2">
                 <div class="flex items-center justify-between">
                   <label for="bulan" class="block text-sm font-medium leading-6 text-gray-900">Bulan</label>
                 </div>
@@ -136,7 +136,7 @@
                     <option v-for="(item, i) in bulan" :key="i" :value="item.value">{{ item.text }}</option>
                   </select>
                 </div>
-              </div>
+              </div> -->
 
               <div class="mb-2">
                 <div class="flex items-center justify-between">
@@ -220,7 +220,7 @@
                 </div>
               </div>
 
-              <div class="mb-2">
+              <!-- <div class="mb-2">
                 <div class="flex items-center justify-between">
                   <label for="bulan" class="block text-sm font-medium leading-6 text-gray-900">Bulan</label>
                 </div>
@@ -230,11 +230,11 @@
                     <option v-for="(item, i) in bulan" :key="i" :value="item.value">{{ item.text }}</option>
                   </select>
                 </div>
-              </div>
+              </div> -->
 
               <div class="mb-2">
                 <div class="flex items-center justify-between">
-                  <label for="permintaan" class="block text-sm font-medium leading-6 text-gray-900">Permintaan</label>
+                  <label for="permintaan" class="block text-sm font-medium leading-6 text-gray-900">Stock</label>
                 </div>
                 <div class="mt-2">
                   <input id="permintaan" v-model="payload.permintaan" type="number" autocomplete="off" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">

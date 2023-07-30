@@ -35,7 +35,7 @@
             </div>
 
             <div class="sm:col-span-1">
-                <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Permintaan / Stock</label>
+                <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Stock</label>
                 <div class="mt-2">
                     <input v-model="payload.permintaan" type="number" name="first-name" id="first-name" autocomplete="off" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
@@ -51,7 +51,7 @@
                 </div>
             </div>
 
-            <div class="sm:col-span-3">
+            <!-- <div class="sm:col-span-3">
                 <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Bulan</label>
                 <div class="mt-2">
                     <select id="bulan" v-model="payload.bulan" type="text" autocomplete="off" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -59,7 +59,7 @@
                         <option v-for="(item, i) in bulan" :key="i" :value="item.value">{{ item.text }}</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
         </div>
       </div>
     </div>

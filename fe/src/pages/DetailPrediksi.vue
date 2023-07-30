@@ -24,7 +24,7 @@
                         </tr>
 
                         <tr>
-                            <td class="pr-5">Permintaan</td>
+                            <td class="pr-5">Stock</td>
                             <td>:</td>
                             <td class="pl-3">{{ prediksi.permintaan }}</td>
                         </tr>
@@ -81,7 +81,7 @@
                             </tr>
 
                             <tr>
-                                <td class="border border-gray-400 p-2">Permintaan</td>
+                                <td class="border border-gray-400 p-2">Stock</td>
                                 <td class="border border-gray-400 p-2">{{ prediksi.prediksi?.permintaan.value }}</td>
                                 <td class="border border-gray-400 p-2 text-right">{{ prediksi.prediksi?.permintaan.nilai.habis }}</td>
                                 <td class="border border-gray-400 p-2 text-right">{{ prediksi.prediksi?.permintaan.nilai.lebih }}</td>
