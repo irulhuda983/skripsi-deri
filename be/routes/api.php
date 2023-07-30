@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\JenisBarangController;
 use App\Http\Controllers\API\StockBarangController;
+use App\Http\Controllers\API\PrediksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,5 +56,11 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::post('/', 'store');
         Route::post('/{stock}/update', 'update');
         Route::delete('/{stock}/delete', 'destroy');
+    });
+
+    Route::prefix('prediksi')->controller(PrediksiController::class)->group(function() {
+        Route::get('', 'index');
+        Route::get('/{prediksi}/show', 'show');
+        Route::post('/', 'store');
     });
 });

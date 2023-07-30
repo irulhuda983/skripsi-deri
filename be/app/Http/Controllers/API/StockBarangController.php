@@ -77,7 +77,7 @@ class StockBarangController extends Controller
 
     public function destroy(Request $request, StockBarang $stock)
     {
-        $stock->destroy();
+        $stock->delete();
 
         return response()->json([
             'data' => new StockBarangResource($stock),

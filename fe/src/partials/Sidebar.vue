@@ -81,7 +81,7 @@
                       <path class="fill-current" :class="isExactActive ? 'text-indigo-600' : 'text-slate-600'" d="M12 3c-4.963 0-9 4.037-9 9s4.037 9 9 9 9-4.037 9-9-4.037-9-9-9z" />
                       <path class="fill-current" :class="isExactActive ? 'text-indigo-200' : 'text-slate-400'" d="M12 15c-1.654 0-3-1.346-3-3 0-.462.113-.894.3-1.285L6 6l4.714 3.301A2.973 2.973 0 0112 9c1.654 0 3 1.346 3 3s-1.346 3-3 3z" />
                     </svg>
-                    <span class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Dashboard</span>
+                    <span class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Home</span>
                   </div>
                 </a>
               </li>
@@ -178,7 +178,7 @@
 
 <script>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { useAuthStore } from "@/stores/auth"
 
 import SidebarLinkGroup from './SidebarLinkGroup.vue'
@@ -195,6 +195,7 @@ export default {
     const trigger = ref(null)
     const sidebar = ref(null)
     const router = useRouter()
+    const route = useRoute()
 
     const storedSidebarExpanded = localStorage.getItem('sidebar-expanded')
     const sidebarExpanded = ref(storedSidebarExpanded === null ? false : storedSidebarExpanded === 'true')
@@ -219,16 +220,19 @@ export default {
     }
 
     onMounted(() => {
+      // console.log(route)
       document.addEventListener('click', clickHandler)
       document.addEventListener('keydown', keyHandler)
     })
 
     onUnmounted(() => {
+      console.log(route)
       document.removeEventListener('click', clickHandler)
       document.removeEventListener('keydown', keyHandler)
     })
 
     watch(sidebarExpanded, () => {
+      console.log(route)
       localStorage.setItem('sidebar-expanded', sidebarExpanded.value)
       if (sidebarExpanded.value) {
         document.querySelector('body').classList.add('sidebar-expanded')

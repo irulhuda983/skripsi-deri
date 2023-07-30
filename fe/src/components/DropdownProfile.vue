@@ -34,10 +34,7 @@
           @focusout="dropdownOpen = false"
         >
           <li>
-            <router-link class="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3" to="/" @click="dropdownOpen = false">Settings</router-link>
-          </li>
-          <li>
-            <router-link class="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3" to="/" @click="dropdownOpen = false">Sign Out</router-link>
+            <a class="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3" href="#" @click="logout()">Sign Out</a>
           </li>
         </ul>
       </div> 
@@ -48,6 +45,8 @@
 <script>
 import { ref, onMounted, onUnmounted } from 'vue'
 import UserAvatar from '../images/user-avatar-32.png'
+import { useRouter } from 'vue-router'
+import { useAuthStore } from "@/stores/auth"
 
 export default {
   name: 'DropdownProfile',
@@ -62,6 +61,9 @@ export default {
     const dropdownOpen = ref(false)
     const trigger = ref(null)
     const dropdown = ref(null)
+
+    const store = useAuthStore()
+    const router = useRouter()
 
     // close on click outside
     const clickHandler = ({ target }) => {
@@ -85,10 +87,15 @@ export default {
       document.removeEventListener('keydown', keyHandler)
     })
 
+    const logout = () => {
+      Promise.all([store.logout(), router.push({ path: "/login" })]);
+    }
+
     return {
       dropdownOpen,
       trigger,
       dropdown,
+      logout,
     }
   }
 }

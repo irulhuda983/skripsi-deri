@@ -1,6 +1,6 @@
 import Repository from './Repository';
 
-const resource = 'jenis-barang';
+const resource = 'stock-barang';
 
 export default {
   get(params = {}) {

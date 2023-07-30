@@ -1,6 +1,6 @@
 import Repository from './Repository';
 
-const resource = 'jenis-barang';
+const resource = 'prediksi';
 
 export default {
   get(params = {}) {
@@ -12,10 +12,10 @@ export default {
   store(payload) {
     return Repository.post(`${resource}`, payload);
   },
-  update(id, payload) {
-    return Repository.post(`${resource}/${id}/update`, payload);
-  },
-  delete(id) {
-    return Repository.delete(`${resource}/${id}/delete`);
-  },
+//   update(id, payload) {
+//     return Repository.post(`${resource}/${id}/update`, payload);
+//   },
+//   delete(id) {
+//     return Repository.delete(`${resource}/${id}/delete`);
+//   },
 };
