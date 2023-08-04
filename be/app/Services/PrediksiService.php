@@ -5,7 +5,8 @@ namespace App\Services;
 use App\Models\StockBarang;
 use App\Models\JenisBarang;
 
-class PrediksiService {
+class PrediksiService
+{
 
     public function getProbabilitas()
     {
@@ -15,8 +16,8 @@ class PrediksiService {
         $total = StockBarang::select('id')->count();
 
         return [
-            'habis' => ['jumlah' => $habis, 'prob' => ( (int) $habis / (int) $total ) ],
-            'lebih' => ['jumlah' => $lebih, 'prob' => ( (int) $lebih / (int) $total ) ],
+            'habis' => ['jumlah' => $habis, 'prob' => ((int) $habis / (int) $total)],
+            'lebih' => ['jumlah' => $lebih, 'prob' => ((int) $lebih / (int) $total)],
         ];
     }
 
@@ -31,8 +32,8 @@ class PrediksiService {
         return [
             'value' => $jenis->jenis_barang,
             'nilai' => [
-                'habis' => $this->pembagian( $jenisHabis, $prob['habis']['jumlah']),
-                'lebih' => $this->pembagian($jenisLebih, $prob['lebih']['jumlah'] ),
+                'habis' => $this->pembagian($jenisHabis, $prob['habis']['jumlah']),
+                'lebih' => $this->pembagian($jenisLebih, $prob['lebih']['jumlah']),
             ]
         ];
     }
@@ -88,10 +89,15 @@ class PrediksiService {
         ]);
 
         return [
+            'data' => [
+                'deviasi' => $deviasi,
+                'habis' => $hasilHabis['data'],
+                'lebih' => $hasilLebih['data'],
+            ],
             'value' => $nilai,
             'nilai' => [
-                'habis' => $hasilHabis,
-                'lebih' => $hasilLebih
+                'habis' => $hasilHabis['hasil'],
+                'lebih' => $hasilLebih['hasil']
             ],
         ];
     }
@@ -139,18 +145,18 @@ class PrediksiService {
         $arrLebih = $coll->where('hasil', 'lebih')->all();
 
         // insert fetch to arr
-        foreach($arrHabis as $item) {
+        foreach ($arrHabis as $item) {
             $pengurangan = (int) $item->permintaan - $meanHabis;
             $perpangkatan = pow($pengurangan, 2);
             array_push($dataHabis, $perpangkatan);
         }
 
-        foreach($arrLebih as $item) {
+        foreach ($arrLebih as $item) {
             $pengurangan = (int) $item->permintaan - $meanLebih;
             $perpangkatan = pow($pengurangan, 2);
             array_push($dataLebih, $perpangkatan);
         }
-        
+
         // nilai standart deviasi
         $collDataHabis = collect($dataHabis);
         $collDataLebih = collect($dataLebih);
@@ -158,6 +164,10 @@ class PrediksiService {
         $devLebih = $this->pembagian($collDataLebih->sum(), ($collDataLebih->count() - 1));
 
         return [
+            'data' => [
+                'habis' => $collDataHabis,
+                'lebih' => $collDataLebih,
+            ],
             'habis' => $devHabis,
             'lebih' => $devLebih,
         ];
@@ -180,12 +190,16 @@ class PrediksiService {
 
         // cari hasil akar
         $pengakaran = sqrt((2 * $pi)) * $deviasi;
-        $hasilAkar = $this->pembagian(1, $pengakaran);
+        $hasilAkar = 1 / $pengakaran;
+        // $hasilAkar = $this->pembagian(1, $pengakaran);
 
         // hitung hasil
         $hasil = $hasilAkar * $hasilExp;
 
-        return $hasil;
+        return [
+            'data' => compact('hasilX', 'hasilExp', 'pengakaran', 'hasilAkar'),
+            'hasil' => $hasil
+        ];
     }
 
     public function pembagian($nilai1, $nilai2)
