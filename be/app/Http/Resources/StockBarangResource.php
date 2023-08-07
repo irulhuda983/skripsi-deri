@@ -18,7 +18,7 @@ class StockBarangResource extends JsonResource
             "id" => $this->id,
             "nama_barang" => $this->nama_barang,
             "jenis_barang_id" => $this->jenis_barang_id,
-            "jenis_barang" => $this->jenisBarang->jenis_barang,
+            "jenis_barang" => optional($this->jenisBarang)->jenis_barang,
             "bulan" => $this->bulan,
             "permintaan" => $this->permintaan,
             "kriteria_harga" => $this->kriteria_harga,

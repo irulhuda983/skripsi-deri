@@ -17,7 +17,7 @@ class PrediksiResource extends JsonResource
         return [
             'id' => $this->id,
             'nama_barang' => $this->nama_barang,
-            'jenis_barang' => $this->jenis_barang,
+            'jenis_barang' => optional($this->jenis_barang),
             'bulan' => $this->bulan,
             'permintaan' => $this->permintaan,
             'kriteria_harga' => $this->kriteria_harga,
