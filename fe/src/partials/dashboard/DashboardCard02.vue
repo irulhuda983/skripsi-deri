@@ -1,33 +1,20 @@
 <template>
   <div class="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white shadow-lg rounded-sm border border-gray-200">
-    <div class="px-5 pt-5">
+    <div class="px-5 pt-5 mb-12">
       <header class="flex justify-between items-start mb-2">
         <!-- Icon -->
         <img src="../../images/icon-02.svg" width="32" height="32" alt="Icon 02" />
-        <EditMenu align="right" class="relative inline-flex">
-          <li>
-            <a class="font-medium text-sm text-gray-600 hover:text-gray-800 flex py-1 px-3" href="#0">Option 1</a>
-          </li>
-          <li>
-            <a class="font-medium text-sm text-gray-600 hover:text-gray-800 flex py-1 px-3" href="#0">Option 2</a>
-          </li>
-          <li>
-            <a class="font-medium text-sm text-red-500 hover:text-red-600 flex py-1 px-3" href="#0">Remove</a>
-          </li>
-        </EditMenu>
       </header>
-      <h2 class="text-lg font-semibold text-gray-800 mb-2">Acme Advanced</h2>
-      <div class="text-xs font-semibold text-gray-400 uppercase mb-1">Sales</div>
+      <h2 class="text-lg font-semibold text-gray-800 mb-2">Barang</h2>
+      <div class="text-xs font-semibold text-gray-400 uppercase mb-1">Total</div>
       <div class="flex items-start">
-        <div class="text-3xl font-bold text-gray-800 mr-2">$17,489</div>
-        <div class="text-sm font-semibold text-white px-1.5 bg-yellow-500 rounded-full">-14%</div>
+        <div class="text-3xl font-bold text-gray-800 mr-2">{{ total }}</div>
       </div>
     </div>
     <!-- Chart built with Chart.js 3 -->
-    <div class="grow">
-      <!-- Change the height attribute to adjust the chart height -->
+    <!-- <div class="grow">
       <LineChart :data="chartData" width="389" height="128" />
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -46,6 +33,7 @@ export default {
     LineChart,
     EditMenu,
   },
+  props: ['total'],
   setup() {
     const chartData = ref({
       labels: [

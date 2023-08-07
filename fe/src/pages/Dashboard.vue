@@ -18,7 +18,7 @@
           <!-- Filter button -->
           <!-- <FilterButton align="right" /> -->
           <!-- Datepicker built with flatpickr -->
-          <Datepicker align="right" />
+          <!-- <Datepicker align="right" /> -->
           <!-- Add view button -->
           <!-- <button class="btn bg-indigo-500 hover:bg-indigo-600 text-white">
               <svg class="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
@@ -34,21 +34,21 @@
       <div class="grid grid-cols-12 gap-6">
 
         <!-- Line chart (Acme Plus) -->
-        <DashboardCard01 />
+        <DashboardCard01 :total="total?.jenis" />
         <!-- Line chart (Acme Advanced) -->
-        <DashboardCard02 />
+        <DashboardCard02 :total="total?.stock" />
         <!-- Line chart (Acme Professional) -->
-        <DashboardCard03 />
+        <DashboardCard03 :total="total?.prediksi" />
         <!-- Bar chart (Direct vs Indirect) -->
         <!-- <DashboardCard04 /> -->
         <!-- Line chart (Real Time Value) -->
-        <DashboardCard05 />
+        <!-- <DashboardCard05 :data="jumlah" /> -->
         <!-- Doughnut chart (Top Countries) -->
         <!-- <DashboardCard06 /> -->
         <!-- Table (Top Channels) -->
         <!-- <DashboardCard07 /> -->
         <!-- Line chart (Sales Over Time) -->
-        <!-- <DashboardCard08 /> -->
+        <DashboardCard08 :data="stat" />
         <!-- Stacked bar chart (Sales VS Refunds) -->
         <!-- <DashboardCard09 /> -->
         <!-- Card (Customers)  -->
@@ -67,7 +67,8 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, reactive, defineAsyncComponent, onMounted } from "vue"
+import { RepositoryFactory } from "@/repositories/RepositoryFactory"
 import WelcomeBanner from '@/partials/dashboard/WelcomeBanner.vue'
 import DashboardAvatars from '@/partials/dashboard/DashboardAvatars.vue'
 import FilterButton from '@/components/DropdownFilter.vue'
@@ -111,8 +112,54 @@ export default {
 
     const sidebarOpen = ref(false)
 
+    const dashboardRepo = RepositoryFactory.get("dashboard")
+    const total = ref({})
+    const stat = ref({})
+    const jumlah = ref({})
+
+    const fetchData = async () => {
+        try {
+            const { data } = await dashboardRepo.getTotal()
+
+            total.value = data
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+    const getStatistik = async () => {
+        try {
+            const { data } = await dashboardRepo.getStatistik()
+
+            stat.value = data.data
+            jumlah.value = data.jumlah
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const getHistory = async () => {
+        try {
+            const { data } = await dashboardRepo.getHistory()
+
+            stat.value = data.data
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    onMounted(() => {
+        fetchData()
+        getHistory()
+    })
+
     return {
-      sidebarOpen,
+        sidebarOpen,
+        total,
+        stat,
+        jumlah,
+        fetchData
     }  
   }
 }

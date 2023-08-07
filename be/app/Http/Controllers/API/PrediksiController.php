@@ -70,4 +70,13 @@ class PrediksiController extends Controller
 
         return new PrediksiResource($store);
     }
+
+    public function destroy(Request $request, Prediksi $prediksi)
+    {
+        $prediksi->delete();
+
+        return response()->json([
+            'message' => 'success',
+        ], 200);
+    }
 }

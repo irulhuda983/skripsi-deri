@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\DashController;
 use App\Http\Controllers\API\JenisBarangController;
 use App\Http\Controllers\API\StockBarangController;
 use App\Http\Controllers\API\PrediksiController;
@@ -42,6 +43,11 @@ Route::prefix('user')->controller(AuthController::class)->group(function () {
 });
 
 Route::middleware('auth:sanctum')->group(function() {
+    Route::prefix('dash')->controller(DashController::class)->group(function() {
+        Route::get('/total', 'total');
+        Route::get('/statistik', 'getStatistik');
+        Route::get('/history', 'getHistory');
+    });
 
     Route::prefix('jenis-barang')->controller(JenisBarangController::class)->group(function() {
         Route::get('', 'index');
@@ -63,5 +69,6 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::get('', 'index');
         Route::get('/{prediksi}/show', 'show');
         Route::post('/', 'store');
+        Route::delete('/{prediksi}/delete', 'destroy');
     });
 });

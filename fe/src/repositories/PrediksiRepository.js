@@ -3,7 +3,7 @@ import Repository from './Repository';
 const resource = 'prediksi';
 
 export default {
-  get(params = {}) {
+  getList(params = {}) {
     return Repository.get(`${resource}`, { params });
   },
   detail(id) {
@@ -15,7 +15,7 @@ export default {
 //   update(id, payload) {
 //     return Repository.post(`${resource}/${id}/update`, payload);
 //   },
-//   delete(id) {
-//     return Repository.delete(`${resource}/${id}/delete`);
-//   },
+  delete(id) {
+    return Repository.delete(`${resource}/${id}/delete`);
+  },
 };

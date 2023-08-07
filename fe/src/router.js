@@ -43,6 +43,12 @@ const router = createRouter({
           meta: { title: 'prediksi', auth: true, menu: 'prediksi', bread: 'Prediksi' },
         },
         {
+          path: '/prediksi/list',
+          name: 'listPrediksi',
+          component: () => import('@/pages/ListPrediksi.vue'),
+          meta: { title: 'prediksi', auth: true, menu: 'prediksi', bread: 'Prediksi' },
+        },
+        {
           path: '/prediksi/:id/show',
           name: 'detailPrediksi',
           component: () => import('@/pages/DetailPrediksi.vue'),

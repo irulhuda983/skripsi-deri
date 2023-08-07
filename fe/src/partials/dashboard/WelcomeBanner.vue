@@ -45,7 +45,7 @@
 
     <!-- Content -->
     <div class="relative">
-      <h1 class="text-2xl md:text-3xl text-gray-800 font-bold mb-1">Good afternoon, Ahmad Deri. 👋</h1>
+      <h1 class="text-2xl md:text-3xl text-gray-800 font-bold mb-1">{{ ucapan }} Ahmad Deri. 👋</h1>
       <p>Here is what’s happening with your projects today:</p>
     </div>
 
@@ -53,7 +53,25 @@
 </template>
 
 <script>
+import { ref, computed } from 'vue'
 export default {
   name: 'WelcomeBanner',
+  setup() {
+    const ucapan = computed(() => {
+        let text = null
+        const h=(new Date()).getHours();
+        const m=(new Date()).getMinutes();
+        const s=(new Date()).getSeconds();
+        if (h >= 4 && h < 10) text = "Selamat pagi,";
+        if (h >= 10 && h < 15) text = "Selamat siang,";
+        if (h >= 15 && h < 18) text = "Selamat sore,";
+        if (h >= 18 || h < 4) text = "Selamat malam,";
+        return text
+    })
+
+    return {
+        ucapan
+    };
+  }
 }
 </script>
