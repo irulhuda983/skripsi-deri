@@ -34,6 +34,15 @@ Route::get('upload/{pathA}/{pathB}/{pathC?}', function ($pathA, $pathB, $pathC =
 });
 // end generate url dokumen
 
+Route::get('file-stock', function() {
+    $pathToFile = public_path().'/stock-barang.csv';
+    $headers = array(
+        'Content-Type: text/csv',
+    );
+
+    return response()->download($pathToFile, 'stock-barang.csv', $headers);
+});
+
 
 Route::prefix('user')->controller(AuthController::class)->group(function () {
     Route::post('auth', 'issueToken');
@@ -61,6 +70,7 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::get('', 'index');
         Route::get('/{stock}/show', 'show');
         Route::post('/', 'store');
+        Route::post('/upload-csv', 'uploadCsv');
         Route::post('/{stock}/update', 'update');
         Route::delete('/{stock}/delete', 'destroy');
     });

@@ -39,21 +39,30 @@ const router = createRouter({
         {
           path: '/prediksi',
           name: 'prediksi',
-          component: () => import('@/pages/Prediksi.vue'),
+          component: () => import('@/pages/Prediksi/Main.vue'),
+          redirect: '/prediksi/list',
           meta: { title: 'prediksi', auth: true, menu: 'prediksi', bread: 'Prediksi' },
-        },
-        {
-          path: '/prediksi/list',
-          name: 'listPrediksi',
-          component: () => import('@/pages/ListPrediksi.vue'),
-          meta: { title: 'prediksi', auth: true, menu: 'prediksi', bread: 'Prediksi' },
-        },
-        {
-          path: '/prediksi/:id/show',
-          name: 'detailPrediksi',
-          component: () => import('@/pages/DetailPrediksi.vue'),
-          meta: { title: 'detail prediksi', auth: true, menu: 'prediksi', bread: 'Prediksi' },
-        },
+          children: [
+            {
+              path: '/prediksi/list',
+              name: 'listPrediksi',
+              component: () => import('@/pages/Prediksi/List.vue'),
+              meta: { title: 'prediksi', auth: true, menu: 'prediksi', bread: 'List Prediksi' },
+            },
+            {
+              path: '/prediksi/add',
+              name: 'addPrediksi',
+              component: () => import('@/pages/Prediksi/Add.vue'),
+              meta: { title: 'prediksi', auth: true, menu: 'prediksi', bread: 'Tambah Prediksi' },
+            },
+            {
+              path: '/prediksi/:id/show',
+              name: 'detailPrediksi',
+              component: () => import('@/pages/Prediksi/Detail.vue'),
+              meta: { title: 'detail prediksi', auth: true, menu: 'prediksi', bread: 'Prediksi' },
+            },
+          ]
+        }
       ]
     },
   ]

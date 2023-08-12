@@ -6,8 +6,8 @@
 
         <div>
           <!-- Add view button -->
-          <router-link :to="{name: 'prediksi'}" class="btn bg-indigo-500 hover:bg-indigo-600 text-white">
-              <span class="hidden xs:block ml-2">Back</span>
+          <router-link :to="{name: 'addPrediksi'}" class="btn bg-indigo-500 hover:bg-indigo-600 text-white">
+              <span class="hidden xs:block ml-2">Prediksi</span>
           </router-link>
         </div>
       </header>

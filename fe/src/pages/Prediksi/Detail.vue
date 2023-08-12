@@ -3,7 +3,7 @@
         <header class="py-4 border-b border-gray-100 flex items-center justify-between">
             <h1 class="font-semibold text-gray-800">Detail Prediksi</h1>
 
-            <a href="#" @click.prevent="router.go(-1)" class="hover:text-blue-400">Kembali</a>
+            <router-link :to="{ name: 'listPrediksi'}" class="hover:text-blue-400">List Prediksi</router-link>
         </header>
         <div class="mt-4 px-4 sm:px-6 lg:px-8 py-8 w-full mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
 

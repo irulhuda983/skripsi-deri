@@ -1,16 +1,32 @@
 <template>
   <main class="box-border w-full px-4">
     <div class="mt-4 px-4 sm:px-6 lg:px-8 py-8 w-full mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
-      <header class="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
-        <h2 class="font-semibold text-gray-800">Stock Barang</h2>
+      <header class="px-5 py-4 border-b border-gray-100 flex flex-col lg:flex-row lg:items-center lg:justify-between">
+        <h2 class="font-semibold text-gray-800 mb-3 lg:mb-0">Stock Barang</h2>
 
-        <div>
+        <div class="flex items-center space-x-3">
           <!-- Add view button -->
+          <select v-model="params.jenis" @change.prevent="fetchData()" placeholder="Jenis Barang" class="w-44 text-xs bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-2">
+            <option value="">Pilih Jenis Barang</option>
+            <option v-for="(item, i) in optJenis" :key="i" :value="item.id">{{ item.jenis_barang }}</option>
+          </select>
+          <select v-model="params.kriteria" @change.prevent="fetchData()" placeholder="Kategori Harga" class="w-44 text-xs bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-2">
+            <option value="">Pilih Kriteria</option>
+            <option value="murah">Murah</option>
+            <option value="mahal">Mahal</option>
+          </select>
+          <div class="h-8 w-px bg-gray-300"></div>
           <button class="btn bg-indigo-500 hover:bg-indigo-600 text-white" @click.prevent="openModalTambah()">
               <svg class="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
                   <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
               </svg>
               <span class="hidden xs:block ml-2">Add</span>
+          </button>
+          <button class="btn bg-indigo-500 hover:bg-indigo-600 text-white" @click.prevent="openModalUpload()">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 fill-current opacity-50 shrink-0">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+              </svg>
+              <span class="hidden xs:block ml-2">Upload</span>
           </button>
         </div>
       </header>
@@ -25,10 +41,10 @@
                   <div class="font-semibold text-left">No</div>
                 </th>
                 <th class="p-2">
-                  <div class="font-semibold text-center">Nama Barang</div>
+                  <div class="font-semibold text-left">Nama Barang</div>
                 </th>
                 <th class="p-2">
-                  <div class="font-semibold text-center">Jenis Barang</div>
+                  <div class="font-semibold text-left">Jenis Barang</div>
                 </th>
                 <th class="p-2">
                   <div class="font-semibold text-center">stock</div>
@@ -52,13 +68,13 @@
               <!-- Row -->
               <tr v-for="(item, i) in stockBarang" :key="i">
                 <td class="p-2">
-                  <div class="text-center">{{ i + 1 }}</div>
+                  <div class="text-left">{{ i + 1 }}</div>
                 </td>
                 <td class="p-2">
-                  <div class="text-center">{{ item.nama_barang }}</div>
+                  <div class="text-left">{{ item.nama_barang }}</div>
                 </td>
                 <td class="p-2">
-                  <div class="text-center">{{ item.jenis_barang }}</div>
+                  <div class="text-left">{{ item.jenis_barang }}</div>
                 </td>
                 <!-- <td class="p-2">
                   <div class="text-center">{{ item.bulan }}</div>
@@ -93,7 +109,6 @@
               </tr>
             </tbody>
           </table>
-
         </div>
       </div>
     </div>
@@ -339,6 +354,62 @@
       </template>
     </Modal>
     <!-- end modal delete -->
+
+    <!-- modal tambah -->
+    <Modal ref="modalUpload">
+      <template v-slot:modal-body>
+        <div class="w-full bg-white">
+          <div class="w-full">
+            <div class="border-b font-semibold text-xl box-border w-full p-4">Upload Stock Barang</div>
+            <div class="w-full box-border p-4">
+              <div class="flex items-center justify-center w-full">
+                  <label for="media-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer bg-gray-50" :class="errorFile ? 'border-red-300':'border-gray-300'">
+                      <div v-if="previewFile" class="flex flex-col items-center justify-center pt-5 pb-6 text-green-500">
+                          <svg xmlns="http://www.w3.org/2000/svg" id="file" data-name="Layer 1" viewBox="0 0 24 24" class="w-40 fill-current">
+                              <path xmlns="http://www.w3.org/2000/svg" d="m14.182,17.457c-.159.894-1.013,1.543-2.029,1.543-.822,0-1.594-.331-2.118-.909-.231-.254-.212-.647.042-.877h0c.254-.231.647-.212.877.042h0c.285.314.732.501,1.197.501.446,0,.759-.264.805-.519.061-.343-.449-.559-.607-.618-.748-.276-1.422-.577-1.422-.577-.596-.38-.859-.963-.773-1.57.093-.646.565-1.172,1.232-1.373,1.31-.395,2.394.496,2.438.534l.003.002c.261.22.295.61.075.871l-.005.005c-.22.261-.609.295-.87.075-.025-.02-.629-.492-1.283-.298-.291.088-.349.281-.36.359-.008.059-.013.204.129.301.016,0,.611.262,1.265.504,1.216.449,1.521,1.328,1.4,2.002Zm-5.998-.431c-.227,0-.439.121-.545.322-.124.236-.378.402-.665.407-.399-.007-.721-.331-.72-.732,0-.137-.007-1.918-.008-2.013-.001-.401.321-.725.72-.732.287.005.541.171.665.407.106.201.318.322.545.322.47,0,.771-.501.55-.916-.335-.628-1.003-1.058-1.772-1.058-1.08,0-1.956.876-1.956,1.956l.008,2.055c0,1.08.876,1.956,1.956,1.956.768,0,1.437-.43,1.772-1.058.221-.415-.08-.916-.55-.916Zm10.007-3.993h-.012c-.286,0-.532.201-.591.48l-.58,2.783-.706-2.807c-.067-.268-.309-.456-.585-.456-.393,0-.681.37-.585.751l1.165,4.626c.087.347.399.59.757.59.37,0,.689-.259.764-.621l.964-4.619c.078-.375-.208-.727-.591-.727Zm3.808-2.548v8.515c0,2.757-2.243,5-5,5H7c-2.757,0-5-2.243-5-5V5C2,2.243,4.243,0,7,0h4.515c1.87,0,3.628.729,4.95,2.051l3.484,3.484c1.322,1.322,2.051,3.08,2.051,4.95Zm-6.949-7.021c-.318-.318-.671-.587-1.051-.806v4.341c0,.552.448,1,1,1h4.341c-.218-.38-.488-.733-.806-1.051l-3.484-3.484Zm4.949,7.021c0-.163-.008-.325-.023-.485h-4.977c-1.654,0-3-1.346-3-3V2.023c-.16-.015-.322-.023-.485-.023h-4.515c-1.654,0-3,1.346-3,3v14c0,1.654,1.346,3,3,3h10c1.654,0,3-1.346,3-3v-8.515Z"/>
+                          </svg>
+                          <!-- mediaFile.files[0].type == 'application/pdf' -->
+                          <div class="mt-2 text-gray-500 font-semibold text-center">{{ file.files[0].name }}</div>
+                      </div>
+
+                      <div v-else class="flex flex-col items-center justify-center pt-5 pb-6">
+                          <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                          </svg>
+                          <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span></p>
+                          <p class="text-xs text-gray-500 dark:text-gray-400">CSV (MAX. 5mb)</p>
+                      </div>
+                      <input id="media-file" ref="file" type="file" class="sr-only" @change="readFile" />
+                  </label>
+              </div> 
+              <div v-if="errorFile" class="text-red-500 italic text-xs mt-1">{{ errorFile }}</div>
+
+            </div>
+            <div v-if="loadingSave" class="flex justify-end items-center space-x-3 box-border px-4 py-2">
+              <span>Menyimpan Data</span>
+            </div>
+            <div v-else class="flex items-center justify-between">
+              <a href="#" @click.prevent="downloadFile()" class="px-4 text-sm">Download contoh</a>
+              <div class="flex justify-end items-center space-x-3 box-border px-4 py-2">
+                <button
+                  @click.prevent="uploadData"
+                  class="px-4 py-2 rounded bg-indigo-600 text-white text-xs font-semibold border border-indigo-600 hover:bg-transparent hover:text-indigo-600"
+                >
+                  Simpan
+                </button>
+                <button
+                  @click.prevent="closeModalUpload"
+                  class="px-4 py-2 rounded bg-red-500 text-white text-xs font-semibold border border-red-500 hover:bg-transparent hover:text-red-500"
+                >
+                  Batal
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+    </Modal>
+    <!-- end modal upload -->
   </main>
 </template>
 
@@ -348,6 +419,8 @@ import { RepositoryFactory } from "@/repositories/RepositoryFactory"
 import { toast } from 'vue3-toastify'
 
 const Modal = defineAsyncComponent(() => import("@/components/Modal.vue"));
+import axios from 'axios'
+import Papa from 'papaparse'
 
 export default {
   components: {Modal},
@@ -357,7 +430,9 @@ export default {
     const stockBarangRepo = RepositoryFactory.get("stockBarang")
     const jenisBarangRepo = RepositoryFactory.get("jenisBarang")
     const params = reactive({
-      filter: "",
+      kriteria: '',
+      jenis: "",
+      search: "",
       hasil: null,
       page: 1,
       limit: 10,
@@ -372,6 +447,10 @@ export default {
       kriteria_harga: '',
       hasil: '',
     })
+
+    const file = ref()
+    const errorFile = ref(null)
+    const previewFile = ref(null)
 
     const bulan = ref([
       {value: 'januari', text: 'Januari'},
@@ -404,6 +483,7 @@ export default {
 
     const modalTambah = ref()
     const modalUpdate = ref()
+    const modalUpload = ref()
     const modalDelete = ref()
 
     const fetchData = async () => {
@@ -550,6 +630,18 @@ export default {
       // modalDelete.value.open = true
     }
 
+    // open modal tambah
+    const openModalUpload = () => {
+      modalUpload.value.open = true
+    };
+
+    // open modal tambah
+    const closeModalUpload = () => {
+      modalUpload.value.open = false
+      previewFile.value = null
+      errorFile.value = null
+    };
+
     // open modal delete
     const openModalDelete = (id) => {
       idStock.value = id;
@@ -563,6 +655,100 @@ export default {
       modalDelete.value.open = false;
     }
 
+    // read file
+    const readFile = () => {
+      errorFile.value = null
+      const files = file.value.files[0]
+      const sizeFile = files.size
+      const tipeFile = files.type
+
+      const arrType = ['text/csv']
+      const maxFile = 5 * 1048576
+
+      if(!arrType.includes(tipeFile)) {
+          errorFile.value = 'Type File must be csv'
+          return
+      }
+
+      if(sizeFile > maxFile) {
+          errorFile.value = 'file size cannot be larger than 5 mb'
+          return
+      }
+
+      // console.log(file.value.files[0])
+      // previewFile.value = URL.createObjectURL(file.value.files[0])
+      previewFile.value = file.value.files[0]
+    }
+
+    const CSVToJSON = (data, delimiter = ',') => {
+      const titles = data.slice(0, data.indexOf('\r\n')).split(delimiter);
+      return data
+        .slice(data.indexOf('\r\n') + 1)
+        .split('\r\n')
+        .map(v => {
+          const values = v.split(delimiter);
+          console.log(values)
+          return titles.reduce(
+            (obj, title, index) => ((obj[title] = values[index]), obj),
+            {}
+          );
+        });
+    }
+
+    const downloadFile = async () => {
+      const uri = import.meta.env.VITE_APP_API_URL
+      const data = await axios.get(`${uri}/api/file-stock`, {
+        responseType: "text",
+      })
+
+      const jsonData = CSVToJSON(data.data)
+      const csvData = Papa.unparse(jsonData, {newline: "\n"})
+
+      const blob = new Blob([csvData], { type:'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'stock-barang.csv';
+      a.click();
+      window.URL.revokeObjectURL(url);
+    }
+
+    // uploadFIle
+    const uploadData = async () => {
+      loadingSave.value = true;
+      try {
+        const formData = new FormData();
+        if (file.value.files[0] !== undefined) {
+          formData.append('file', file.value.files[0]);
+        }
+        console.log(file.value.files[0])
+        const data = await stockBarangRepo.uploadCsv(formData);
+
+        toast.success("Berhasil Tambah Data !", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 1000,
+        })
+
+        // console.log(data.data)
+
+        closeModalUpload()
+        fetchData()
+      } catch (e) {
+        console.log(e)
+        // if (e.response.status == 422) {
+        //   let err = e.response.data.errors;
+        // }
+
+        toast.error("Format file tidak sesuai !", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 1000,
+        })
+        
+      }finally{
+        loadingSave.value = false;
+      }
+    }
+
     onMounted(() => {
       fetchData()
       getJenisbarang()
@@ -572,8 +758,14 @@ export default {
       idStock,
       stockBarang,
       stockBarangRepo,
+      file,
+      readFile,
+      errorFile,
+      previewFile,
+      uploadData,
       modalTambah,
       modalUpdate,
+      modalUpload,
       modalDelete,
       payload,
       bulan,
@@ -590,8 +782,11 @@ export default {
       closeModalTambah,
       openModalUpdate,
       closeModalUpdate,
+      openModalUpload,
+      closeModalUpload,
       openModalDelete,
       closeModalDelete,
+      downloadFile,
     }
   },
 }

@@ -2,8 +2,7 @@
   <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
       <div class="flex flex-col items-center justify-center space-x-1">
-        <img class="mb-2 mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
-        <div class="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">TB REJO MULYO</div>
+        <img class="mb-2 mx-auto h-32 lg:h-44 w-auto" :src="logoImg" alt="Your Company">
       </div>
       <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
     </div>
@@ -43,6 +42,7 @@ import { ref, computed } from "vue"
 import { useAuthStore } from "@/stores/auth"
 import { useRouter } from "vue-router"
 import { toast } from 'vue3-toastify'
+import logoImg from '@/assets/logo.png'
 
 export default{
   setup() {
@@ -83,6 +83,7 @@ export default{
       username,
       password,
       loading,
+      logoImg,
       onLoginHandler,
     }
   },

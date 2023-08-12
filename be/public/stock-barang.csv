@@ -1,0 +1,143 @@
+no,nama,jenis,stok,k_harga,hasil
+1,"Engsel Isumi 3"" x 2 1/2 """,engsel,80,mahal,habis
+2,Engsel Pintu PVC,engsel,50,murah,lebih
+3,Engsel KS,engsel,55,mahal,lebih
+4,Engsel Tebal,engsel,20,murah,habis
+5,Engsel Dior,engsel,50,murah,lebih
+6,"Engsel Tebal ""GOMEO"" 4'' x 3''",engsel,30,mahal,habis
+7,"Grendel GP ""MIAMI"" 2""",Grendel,35,mahal,lebih
+8,"Grendel (YSK) babet 4""",Grendel,15,murah,habis
+9,Grendel Kupu Kupu,Grendel,55,murah,lebih
+10,Grendel Ferza,Grendel,25,mahal,habis
+11,Grendel HSG,Grendel,55,mahal,lebih
+12,Hak angin besar,Hak Angin,50,murah,habis
+13,Hak angin kecil,Hak Angin,43,murah,lebih
+14,Hak angin hidrolik,Hak Angin,20,murah,habis
+15,Hak angin alumunium,Hak Angin,50,mahal,lebih
+16,Hak angin sedang,Hak Angin,50,mahal,lebih
+17,Hak Angin (SKT),Hak Angin,50,murah,lebih
+18,Gembok 30 mm,Gembok,40,murah,habis
+19,Gembok LIP ,Gembok,60,murah,lebih
+20,Gembok (HSG),Gembok,30,mahal,habis
+21,Gembok HELSEN,Gembok,55,mahal,habis
+22,Gembok mini,Gembok,70,murah,lebih
+23,Gembok Jaket 60 mm,Gembok,25,mahal,lebih
+24,Kran tembok stainlise,Bahan Kamar Mandi,30,mahal,lebih
+25,Kran Air Alumunium ,Bahan Kamar Mandi,40,murah,lebih
+26,Kran Putih,Bahan Kamar Mandi,40,mahal,lebih
+27,Sambungan Selang,Bahan Kamar Mandi,20,murah,habis
+28,Sambungan Kran,Bahan Kamar Mandi,50,mahal,lebih
+29,Door Stop,Bahan Kamar Mandi,60,mahal,lebih
+30,Kloset Biasa,Bahan Kamar Mandi,15,murah,habis
+31,Kloset Jongkok best (biru),Bahan Kamar Mandi,10,murah,habis
+32,Selang Benang (EKAHOSE) ,Bahan Kamar Mandi,15,mahal,habis
+33,pintu pvc kamar mandi,Bahan Kamar Mandi,20,murah,lebih
+34,Kunci Laci GLOBAL no.333,Bahan Pintu,25,mahal,lebih
+35,Tarikan Laci / Pintu ( Ukiran Cokelat ),Bahan Pintu,15,mahal,habis
+36,Body Pintu Geser EXITO,Bahan Pintu,10,murah,lebih
+37,Handle Pintu Komplit (OLYMPUS),Bahan Pintu,5,mahal,lebih
+38,Handle Pintu Geser,Bahan Pintu,15,murah,lebih
+39,Handle Pintu Tarik,Bahan Pintu,10,mahal,habis
+40,Tarikan Pintu besar,Bahan Pintu,15,murah,habis
+41,Tarikan Pintu Kecil,Bahan Pintu,18,mahal,habis
+42,Tarikan Pintu Sedang,Bahan Pintu,22,mahal,lebih
+43,Tarikan Pintu / Laci SS Mosel,Bahan Pintu,20,murah,habis
+44,"Catut (Merah) 6""",Peralatan Tukang  Kunci,10,murah,habis
+45,Tang Kombinasi Serbaguna,Peralatan Tukang  Kunci,25,mahal,lebih
+46,Obeng Ketok D-3,Peralatan Tukang  Kunci,20,mahal,habis
+47,Kunci Ring Pas set VIOLA,Peralatan Tukang  Kunci,12,murah,lebih
+48,"Kunci Bago (kunci inggris) 8""",Peralatan Tukang  Kunci,10,murah,lebih
+49,"Gunting Seng VENUS 8""",Peralatan Tukang  Kunci,12,mahal,habis
+50,Tatah Kayu satu set ,Peralatan Tukang  Tatah,5,mahal,lebih
+51,"Cetok 7"" (OVAL)",Peralatan Tukang  Tatah,20,murah,lebih
+52,"Cetok 6"" (KOTAK)",Peralatan Tukang  Tatah,15,murah,habis
+53,Sekop Pasir,Peralatan Tukang  Tatah,10,mahal,lebih
+54,Palu  Tukang 100 gr,Peralatan Tukang Palu,15,mahal,lebih
+55,Palu  Tukang 200 gr,Peralatan Tukang Palu,17,murah,lebih
+56,Palu Kambing 25 (kecil),Peralatan Tukang Palu,12,mahal,lebih
+57,Palu Kambing 30( besar),Peralatan Tukang Palu,15,mahal,lebih
+58,Palu Tukang 300 gr,Peralatan Tukang Palu,15,murah,habis
+59,Palu Tukang Bodem ,Peralatan Tukang Palu,5,mahal,lebih
+60,Gergaji Batu Kumbung,Peralatan Tukang Gergaji,15,mahal,lebih
+61,Gergaji kayu kecil,Peralatan Tukang Gergaji,20,murah,habis
+62,Gergaji Kayu besar,Peralatan Tukang Gergaji,40,mahal,lebih
+63,Gergaji Kayu,Peralatan Tukang Gergaji,15,murah,habis
+64,kuas cat ,Peralatan Tukang  Kuas,25,mahal,lebih
+65,kuas Reyner,Peralatan Tukang  Kuas,40,murah,lebih
+66,Kuas Humve,Peralatan Tukang  Kuas,35,mahal,habis
+67,kuas cat kecil,Peralatan Tukang  Kuas,50,murah,habis
+68,kuas cat besar,Peralatan Tukang  Kuas,60,murah,lebih
+69,kuas cat rol ,Peralatan Tukang  Kuas,10,mahal,habis
+70,Siku Satu Set ,Peralatan Tukang  Siku,5,murah,lebih
+71,Klem Kayu ,Peralatan Tukang  Siku,7,murah,habis
+72,Mata gerenda kecil,Peralatan Pemotong,15,murah,lebih
+73,Mata gerenda sedang,Peralatan Pemotong,50,mahal,lebih
+74,Mata gerenda besar,Peralatan Pemotong,50,murah,lebih
+75,Mata gerenda potong keramik,Peralatan Pemotong,40,murah,lebih
+76,Batu Potong Flexible,Peralatan Pemotong,20,mahal,habis
+77,amplas panjang 1m,Amplas,70,mahal,lebih
+78,amplas panjang 5m,Amplas,55,murah,habis
+79,amplas panjang 8m,Amplas,55,murah,lebih
+80,amplas panjang 10m,Amplas,50,murah,habis
+81,semen putih 3 roda 40 kg,Semen,60,murah,habis
+82,semen putih 3 roda 50 kg,Semen,150,mahal,lebih
+83,semen bima 40 kg,Semen,150,murah,lebih
+84,semen gresik 50 kg,Semen,100,mahal,lebih
+85,semen gresik 40 kg,Semen,80,murah,habis
+86,cornice thaiplus 20kg,Semen,40,mahal,lebih
+87,Meteran 5m,Barang Pengukur,25,mahal,lebih
+88,Meteran 8m,Barang Pengukur,25,murah,habis
+89,Meteran (3 meter),Barang Pengukur,10,murah,habis
+90,Penggaris Siku Tukang,Barang Pengukur,12,mahal,lebih
+91,Talang Seng 60m,Barang Talang,20,murah,habis
+92,Takang Seng 10m,Barang Talang,60,mahal,lebih
+93,Talang Seng 20m,Barang Talang,50,murah,habis
+94,Talang Karpet 10m,Barang Talang,50,mahal,lebih
+95,Talang Karpet 60,Barang Talang,30,mahal,lebih
+96,lampu PL(FOCUS) 230V/7 watt,Barang Lampu,25,mahal,habis
+97,Lampu PL(FOCUS) 230V/20 watt,Barang Lampu,55,murah,lebih
+98,Lampu Philip Lid 20 watt,Barang Lampu,40,mahal,lebih
+99,Lampu Philip Lid 10 watt,Barang Lampu,50,murah,habis
+100,Lampu Philip Lid,Barang Lampu,20,murah,habis
+101,genteng ,Barang Atab,800,mahal,lebih
+102,kasiboard,Barang Atab,50,murah,habis
+103,gibsen ,Barang Atab,80,mahal,lebih
+104,esbes,Barang Atab,50,murah,habis
+105,pipa pvc 8 inc,Barang Pipa,110,murah,lebih
+106,pipa pvc 10 inc,Barang Pipa,100,mahal,habis
+107,pipa pvc 16 inc,Barang Pipa,120,murah,lebih
+108,pipa pvc 20 inc,Barang Pipa,40,murah,habis
+109,paku kayu 5cm,Barang Paku,50,mahal,lebih
+110,paku beton ,Barang Paku,50,murah,habis
+111,paku payung,Barang Paku,200,murah,lebih
+112,paku kasiborad ,Barang Paku,80,mahal,habis
+113,baut stainless 2 cm,Barang Baut,50,mahal,lebih
+114,baut stainless 4 cm,Barang Baut,90,murah,lebih
+115,baut roofing 4cm,Barang Baut,100,mahal,lebih
+116,baut roofing 2cm,Barang Baut,60,murah,habis
+117,Triplex 8mm,Barang Triplek,100,murah,lebih
+118,Triplex 10mm,Barang Triplek,90,mahal,habis
+119,Triplex 12mm,Barang Triplek,20,murah,habis
+120,Triplex 20mm,Barang Triplek,20,murah,lebih
+121,Politur (India) Netral,Barang Cat Plitur,20,murah,habis
+122,Dempul Kayu (ALTEX),Barang Cat Plitur,35,mahal,lebih
+123,IH Politur Warna SP-06,Barang Cat Plitur,40,mahal,habis
+124,Meni Besi (ALTEK) Hijau/Green 5kg,Barang Cat Minyak,15,murah,lebih
+125,BEE BRAND JUNIOR ,Barang Cat Minyak,27,murah,habis
+126,ALTEX,Barang Cat Minyak,22,mahal,lebih
+127,CENDANA,Barang Cat Minyak,10,mahal,lebih
+128,ENVITEX,Barang Cat Minyak,10,murah,habis
+129,Cat Tembok MAXILITE,Barang Cat Tembok,15,murah,lebih
+130,AVIAN,Barang Cat Tembok,20,murah,habis
+131,Pasir 5 kubik ,Barang Pasir,30,mahal,lebih
+132,Pasir 8 kubik ,Barang Pasir,20,murah,habis
+133,Pasir 10 kubik ,Barang Pasir,20,murah,habis
+134,pasir  12kubik,Barang Pasir,5,mahal,lebih
+135,batu bata,Barang Batu,2700,murah,lebih
+136,batu bata kumbung,Barang Batu,1500,murah,habis
+137,batu koral,Barang Batu,5,mahal,habis
+138,besi 6 ml,Barang Besi,120,murah,habis
+139,besi 8 ml,Barang Besi,100,murah,lebih
+140,besi 10 ml,Barang Besi,70,mahal,habis
+141,besi 12 ml,Barang Besi,50,murah,habis
+142,superpanel 9mm 1220x2440,Barang Besi,5,mahal,lebih

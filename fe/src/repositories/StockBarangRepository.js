@@ -12,6 +12,13 @@ export default {
   store(payload) {
     return Repository.post(`${resource}`, payload);
   },
+  uploadCsv(payload) {
+    return Repository.post(`${resource}/upload-csv`, payload, {
+      headers: {
+          "Content-Type": "multipart/form-data"
+      }
+    });
+  },
   update(id, payload) {
     return Repository.post(`${resource}/${id}/update`, payload);
   },
